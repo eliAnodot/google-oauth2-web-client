@@ -73,6 +73,10 @@ var GO2 = function GO2(options) {
     if (options.accessType) {
         this._accessType = options.accessType;
     }
+
+    if (options.state) {
+        this._stateId = options.state;
+    }
 };
 
 GO2.receiveMessage = function GO2_receiveMessage() {
@@ -218,7 +222,7 @@ GO2.prototype = {
         this._accessToken = token;
 
         if (this.onlogin) {
-            this.onlogin(this._accessToken);
+            this.onlogin(this._accessToken, this._stateId);
         }
 
         if (expiresIn) {
